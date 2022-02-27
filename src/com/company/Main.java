@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
         beolvasas("fuvar.csv");
         feladat1();
+        feladat2();
     }
 
     private static void beolvasas(String file) {
@@ -36,4 +37,9 @@ public class Main {
         System.out.println("1. feladat: " + fuvarLista.stream().count() + "db utazás került feljegyzésre");
     }
 
+    private static void feladat2(int taxiId) {
+        double bevetel = fuvarLista.stream().filter(fuvar -> fuvar.getTaxi_id() == taxiId).mapToDouble(fuvar -> fuvar.getViteldij() + fuvar.getBorravalo()).sum();
+        long fuvarok = fuvarLista.stream().filter(fuvar -> fuvar.getTaxi_id() == taxiId).count();
+        System.out.printf("2. feladat: A %d azonositójú taxis %d" + "db fuvarból %.2f$ bevételt szerzett\n", taxiId, fuvarok, bevetel);
+    }
 }
