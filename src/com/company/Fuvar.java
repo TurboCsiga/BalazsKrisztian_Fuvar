@@ -6,7 +6,7 @@ public class Fuvar {
     private String indulas;
     private int idotartam;
     private double tavolsag;
-    private double viteldij;
+    private double fuvardij;
     private double borravalo;
     private String fizetes_modja;
 
@@ -26,8 +26,8 @@ public class Fuvar {
         return tavolsag;
     }
 
-    public double getViteldij() {
-        return viteldij;
+    public double getFuvardij() {
+        return fuvardij;
     }
 
     public double getBorravalo() {
@@ -55,8 +55,8 @@ public class Fuvar {
         this.tavolsag = tavolsag;
     }
 
-    public void setViteldij(double viteldij) {
-        this.viteldij = viteldij;
+    public void getFuvardij(double fuvardij) {
+        this.fuvardij = fuvardij;
     }
 
     public void setBorravalo(double borravalo) {
@@ -74,7 +74,7 @@ public class Fuvar {
         this.indulas = adat[1];
         this.idotartam = Integer.parseInt(adat[2]);
         this.tavolsag = Double.parseDouble(adat[3]);
-        this.viteldij = Double.parseDouble(adat[4]);
+        this.fuvardij = Double.parseDouble(adat[4]);
         this.borravalo = Double.parseDouble(adat[5]);
         this.fizetes_modja = adat[6];
     }
@@ -87,7 +87,7 @@ public class Fuvar {
                 this.indulas,
                 this.idotartam,
                 this.tavolsag,
-                this.viteldij,
+                this.fuvardij,
                 this.borravalo,
                 this.fizetes_modja);
     }
