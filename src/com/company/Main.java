@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -12,7 +13,16 @@ public class Main {
     public static void main(String[] args) {
         beolvasas("fuvar.csv");
         feladat1();
-        feladat2();
+        feladat2(6185);
+        feladat3();
+        feladat4();
+        feladat5();
+        /*feladat6();
+        feladat7();
+        feladat8();
+        feladat9();
+        feladat10();
+        feladat11();*/
     }
 
     private static void beolvasas(String file) {
@@ -41,5 +51,19 @@ public class Main {
         double bevetel = fuvarLista.stream().filter(fuvar -> fuvar.getTaxi_id() == taxiId).mapToDouble(fuvar -> fuvar.getViteldij() + fuvar.getBorravalo()).sum();
         long fuvarok = fuvarLista.stream().filter(fuvar -> fuvar.getTaxi_id() == taxiId).count();
         System.out.printf("2. feladat: A %d azonositójú taxis %d" + "db fuvarból %.2f$ bevételt szerzett\n", taxiId, fuvarok, bevetel);
+    }
+    private static void feladat3() {
+        double tavolsag = fuvarLista.stream().mapToDouble(Fuvar::getTavolsag).sum();
+        System.out.printf("3. feladat: Összesen %.2f mérföldet tettek meg a texisok\n", tavolsag);
+    }
+
+    private static void feladat4() {
+        System.out.println("4. feladat: " + fuvarLista.stream().max(Comparator.comparingInt(Fuvar::getIdotartam)).get());
+    }
+
+    private static void feladat5() {
+        System.out.println("5. feladat: " + fuvarLista.stream()
+                .max((fuvar1, fuvar2) -> (int) (fuvar1.getBorravalo() / fuvar1.getViteldij()
+                        - fuvar2.getBorravalo() / fuvar2.getViteldij())).get());
     }
 }
